@@ -13,8 +13,9 @@ queries = []
 
 queries.append(
     '''
-    SELECT 
-    CONCAT('"', title, '", By ', author, ' - ', views, ' views') as top_articles
+    SELECT
+    CONCAT('"', title, '", By ', author, ' - ', views, ' views')
+    as top_articles
     FROM (
          select art.title, a.name as author, count(*) as views
          from articles art
@@ -29,7 +30,8 @@ queries.append(
 
 queries.append(
     '''
-    SELECT CONCAT(author, ' - ', views, ' views') as top_authors
+    SELECT
+    CONCAT(author, ' - ', views, ' views') as top_authors
     FROM (
          select a.name as author, count(*) as views
          from authors a
@@ -43,9 +45,12 @@ queries.append(
 
 queries.append(
     '''
-    SELECT CONCAT(day, ' - ', round(cast(errorsPercent as numeric), 2), '% errors')
+    SELECT
+    CONCAT(day, ' - ', round(cast(errorsPercent as numeric), 2), '% errors')
     FROM (
-         select a.day, (cast(b.totalerrors as float) * 100) / (a.totalok + b.totalerrors) as errorsPercent
+         select a.day,
+         (cast(b.totalerrors as float) * 100) / (a.totalok + b.totalerrors)
+         as errorsPercent
          from (
                select date(time) as day, count(*) as totalok
                from log where status = '200 OK'
@@ -56,7 +61,8 @@ queries.append(
                from log where status = '404 NOT FOUND'
                group by day
                ) b on a.day = b.day
-         where (cast(b.totalerrors as float) * 100) / (a.totalok + b.totalerrors) > 1
+         where
+         (cast(b.totalerrors as float) * 100) / (a.totalok + b.totalerrors) > 1
          order by day desc
          ) t
     ;
