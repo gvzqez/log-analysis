@@ -12,6 +12,6 @@ It consist on a python programme that execute queries to a PostgreSQL database w
 3. Clone the project repository <br />
 ```$ git clone https://github.com/gvzqez/log-analysis```
 4. Move to the project root directory <br />
-```$ cd log-analysis````
+```$ cd log-analysis```
 5. Execute the main python script <br />
 ```$ python main.py```
