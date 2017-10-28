@@ -16,8 +16,9 @@ It consist on a python programme that execute queries to a PostgreSQL database w
 5. Execute the main python script <br />
 ```$ python main.py```
 
+<br />
 
-### Output example:
+#### Output example:
 ```
 ----- Log Analysis -----
 
